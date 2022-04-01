@@ -1,4 +1,4 @@
-﻿var num = 1;
+var num = 1;
 if(num=='1')
 {
     //console.log("Hello, JS");
