@@ -1,0 +1,15 @@
+F:\itransition\Extra 1\obj\Debug\net6.0\Extra 1.csproj.AssemblyReference.cache
+F:\itransition\Extra 1\obj\Debug\net6.0\Extra 1.GeneratedMSBuildEditorConfig.editorconfig
+F:\itransition\Extra 1\obj\Debug\net6.0\Extra 1.AssemblyInfoInputs.cache
+F:\itransition\Extra 1\obj\Debug\net6.0\Extra 1.AssemblyInfo.cs
+F:\itransition\Extra 1\obj\Debug\net6.0\Extra 1.csproj.CoreCompileInputs.cache
+F:\itransition\Extra 1\bin\Debug\net6.0\Extra 1.exe
+F:\itransition\Extra 1\bin\Debug\net6.0\Extra 1.deps.json
+F:\itransition\Extra 1\bin\Debug\net6.0\Extra 1.runtimeconfig.json
+F:\itransition\Extra 1\bin\Debug\net6.0\Extra 1.dll
+F:\itransition\Extra 1\bin\Debug\net6.0\Extra 1.pdb
+F:\itransition\Extra 1\obj\Debug\net6.0\Extra 1.dll
+F:\itransition\Extra 1\obj\Debug\net6.0\refint\Extra 1.dll
+F:\itransition\Extra 1\obj\Debug\net6.0\Extra 1.pdb
+F:\itransition\Extra 1\obj\Debug\net6.0\Extra 1.genruntimeconfig.cache
+F:\itransition\Extra 1\obj\Debug\net6.0\ref\Extra 1.dll
