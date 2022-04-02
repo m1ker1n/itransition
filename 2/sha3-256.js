@@ -5,7 +5,7 @@ var result = [];
 
 var temp = fs.readdirSync('data','utf-8');
 temp.forEach( (file) => {
-    result.push(sha3_256(fs.readFileSync('data/'+file, 'binary')));
+    result.push(sha3_256(fs.readFileSync('data/'+file)));
 });
 
 result.sort();

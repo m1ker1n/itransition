@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "convert-string": "^0.1.0",
+    "converter": "^0.0.5",
+    "cryptojs": "^2.5.3",
     "file": "^0.2.2",
     "filereader": "^0.10.3",
     "js-sha3": "^0.8.0"
