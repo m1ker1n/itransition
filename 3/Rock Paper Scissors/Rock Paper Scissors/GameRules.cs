@@ -15,7 +15,7 @@ namespace Rock_Paper_Scissors
 
     static class GameRules
     {
-        static public GameResult GetResult(int computerMoveIndex, int userMoveIndex, Dictionary<int, string> moves)
+        static public GameResult GetResult(int computerMoveIndex, int userMoveIndex, List<string> moves)
         {
             if (userMoveIndex == computerMoveIndex) return GameResult.Draw;
             if (computerMoveIndex + ((computerMoveIndex < userMoveIndex) ? moves.Count : 0) <= userMoveIndex + moves.Count / 2)

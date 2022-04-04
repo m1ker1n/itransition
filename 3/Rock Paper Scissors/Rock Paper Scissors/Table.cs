@@ -5,15 +5,15 @@ namespace Rock_Paper_Scissors
 {
     internal class Table
     {
-        private Dictionary<int, string> _moves;
+        private List<string> _moves;
         private int _maxLen;
         static private string borderCh = "*";
 
-        public Table(Dictionary<int,string> moves)
+        public Table(List<string> moves)
         {
             _moves = moves;
             _maxLen = 4;
-            foreach(var val in moves.Values)
+            foreach(var val in moves)
             {
                 _maxLen = _maxLen < val.Length ? val.Length : _maxLen;
             }
@@ -23,7 +23,7 @@ namespace Rock_Paper_Scissors
         {
             DrawHorizontalLine();
             DrawElement("", true);
-            foreach(var val in _moves.Values)
+            foreach(var val in _moves)
             {
                 DrawElement(val);
             }

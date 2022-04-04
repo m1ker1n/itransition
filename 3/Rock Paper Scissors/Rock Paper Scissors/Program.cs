@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Rock_Paper_Scissors
 {
@@ -8,15 +9,18 @@ namespace Rock_Paper_Scissors
         static void Main(string[] args)
         {
             bool argsErr = false;
-            var moves = new Dictionary<int, string>();
+            var moves = new List<string>();
+            //var moves = new Dictionary<int, string>();
             
             for(int i = 0; i < args.Length; i++)
             {
-                if(!moves.TryAdd(i, args[i]))
+                if (moves.Contains(args[i]))
                 {
                     Console.WriteLine(args[i] + " already added. All possible moves must be different.");
                     argsErr = true;
                 }
+                else
+                    moves.Add(args[i]);
             }
 
             if(moves.Count < 3)
@@ -63,7 +67,7 @@ namespace Rock_Paper_Scissors
                             break;
                         default:
                             int userMoveInd;
-                            if (int.TryParse(userInput, out userMoveInd) && userMoveInd < moves.Count)
+                            if (int.TryParse(userInput, out userMoveInd) && userMoveInd <= moves.Count)
                             {
                                 userMoveInd--;
                                 Console.WriteLine("Your move: " + moves[userMoveInd]);
@@ -82,7 +86,7 @@ namespace Rock_Paper_Scissors
             }
         }
 
-        static void ShowMenu(Dictionary<int, string> moves)
+        static void ShowMenu(List<string> moves)
         {
             Console.WriteLine("Available moves:");
             for (int i = 1; i <= moves.Count; i++)
@@ -94,7 +98,7 @@ namespace Rock_Paper_Scissors
             Console.Write("Enter your move: ");
         }
 
-        static int GenerateComputerMove(Dictionary<int, string> moves)
+        static int GenerateComputerMove(List<string> moves)
         {
             var rand = new Random();
             return rand.Next(0, moves.Count);
