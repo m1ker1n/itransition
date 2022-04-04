@@ -17,44 +17,19 @@ namespace Rock_Paper_Scissors
             var table = new Table(moves);
             while(!gameOver)
             {
-                bool repeatInput;
-                int computerMoveInd = GenerateComputerMove(moves);
-                string compMoveStr = "Computer move: " + moves[computerMoveInd];
+                int compMoveIndex = GenerateComputerMove(moves);
+                string compMoveStr = "Computer move: " + moves[compMoveIndex];
                 var verifier = new Verifier();
                 string hmac = verifier.GetHMAC(compMoveStr);
                 string hmacKey = verifier.Key;
                 Console.WriteLine("HMAC: " + hmac);
-                do
-                {
-                    repeatInput = false;
-                    ShowMenu(moves);
-                    var userInput = Console.ReadLine().Trim();
 
-                    switch (userInput)
-                    {
-                        case "?":
-                            table.Draw();
-                            repeatInput = true;
-                            break;
-                        case "0":
-                            gameOver = true;
-                            break;
-                        default:
-                            int userMoveInd;
-                            if (int.TryParse(userInput, out userMoveInd) && userMoveInd <= moves.Count)
-                            {
-                                userMoveInd--;
-                                Console.WriteLine("Your move: " + moves[userMoveInd]);
-                                Console.WriteLine(compMoveStr);
-                                var result = GameRules.GetResult(computerMoveInd, userMoveInd, moves);
-                                HandleResult(result);
-                                Console.WriteLine("HMAC Key: " + hmacKey);
-                            }
-                            else
-                                repeatInput = true;
-                            break;
-                    }
-                } while (repeatInput);
+                int userMoveIndex = GetUserMoveIndex(ref gameOver, moves, table);
+                if (userMoveIndex < 0) break;
+
+                OnReceivingInput(moves, userMoveIndex, compMoveIndex, compMoveStr);
+
+                Console.WriteLine("HMAC Key: " + hmacKey);
             }
         }
 
@@ -123,6 +98,47 @@ namespace Rock_Paper_Scissors
                 Console.WriteLine("There must be odd amount of moves, e.g. Rock Paper Scissors.");
                 argsErr = true;
             }
+        }
+
+        static int GetUserMoveIndex(ref bool gameOver, List<string> moves, Table table)
+        {
+            bool repeatInput;
+            do
+            {
+                repeatInput = false;
+                ShowMenu(moves);
+                var userInput = Console.ReadLine().Trim();
+
+                switch (userInput)
+                {
+                    case "?":
+                        table.Draw();
+                        repeatInput = true;
+                        break;
+                    case "0":
+                        gameOver = true;
+                        break;
+                    default:
+                        int userMoveInd;
+                        if (int.TryParse(userInput, out userMoveInd) && userMoveInd <= moves.Count)
+                        {
+                            return --userMoveInd;
+                        }
+                        else
+                            repeatInput = true;
+                        break;
+                }
+            } while (repeatInput);
+
+            return -1;
+        }
+
+        static void OnReceivingInput(List<string> moves, int userMoveIndex, int compMoveIndex, string compMoveStr)
+        {
+            Console.WriteLine("Your move: " + moves[userMoveIndex]);
+            Console.WriteLine(compMoveStr);
+            var result = GameRules.GetResult(compMoveIndex, userMoveIndex, moves);
+            HandleResult(result);
         }
     }
 }

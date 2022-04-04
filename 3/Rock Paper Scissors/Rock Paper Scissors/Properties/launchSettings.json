@@ -1,8 +1,7 @@
 {
   "profiles": {
     "Rock Paper Scissors": {
-      "commandName": "Project",
-      "commandLineArgs": "Rock Scissors Paper 4 5"
+      "commandName": "Project"
     }
   }
 }
