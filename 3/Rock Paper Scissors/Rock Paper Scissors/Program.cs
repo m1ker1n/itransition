@@ -9,46 +9,20 @@ namespace Rock_Paper_Scissors
         static void Main(string[] args)
         {
             bool argsErr = false;
-            var moves = new List<string>();
-            //var moves = new Dictionary<int, string>();
-            
-            for(int i = 0; i < args.Length; i++)
-            {
-                if (moves.Contains(args[i]))
-                {
-                    Console.WriteLine(args[i] + " already added. All possible moves must be different.");
-                    argsErr = true;
-                }
-                else
-                    moves.Add(args[i]);
-            }
-
-            if(moves.Count < 3)
-            {
-                Console.WriteLine("There must be at least 3 moves, e.g. Rock Paper Scissors.");
-                argsErr = true;
-            }
-
-            if (moves.Count % 2 == 0) 
-            {
-                Console.WriteLine("There must be odd amount of moves, e.g. Rock Paper Scissors.");
-                argsErr = true;
-            }
-
+            var moves = InstantiateMoves(args, ref argsErr);
+            MovesValidityCheck(moves, ref argsErr);
             if (argsErr) return;
 
             bool gameOver = false;
             var table = new Table(moves);
-            //game loop
             while(!gameOver)
             {
                 bool repeatInput;
                 int computerMoveInd = GenerateComputerMove(moves);
                 string compMoveStr = "Computer move: " + moves[computerMoveInd];
-                string hmac, hmacKey;
                 var verifier = new Verifier();
-                hmac = verifier.GetHMAC(compMoveStr);
-                hmacKey = verifier.Key;
+                string hmac = verifier.GetHMAC(compMoveStr);
+                string hmacKey = verifier.Key;
                 Console.WriteLine("HMAC: " + hmac);
                 do
                 {
@@ -77,9 +51,7 @@ namespace Rock_Paper_Scissors
                                 Console.WriteLine("HMAC Key: " + hmacKey);
                             }
                             else
-                            {
                                 repeatInput = true;
-                            }
                             break;
                     }
                 } while (repeatInput);
@@ -119,6 +91,37 @@ namespace Rock_Paper_Scissors
                     break;
                 default:
                     throw new ArgumentException();
+            }
+        }
+
+        static List<string> InstantiateMoves(string[] args, ref bool argsErr)
+        {
+            var moves = new List<string>();
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (moves.Contains(args[i]))
+                {
+                    Console.WriteLine(args[i] + " already added. All possible moves must be different.");
+                    argsErr = true;
+                }
+                else
+                    moves.Add(args[i]);
+            }
+            return moves;
+        }
+
+        static void MovesValidityCheck(List<string> moves, ref bool argsErr)
+        {
+            if (moves.Count < 3)
+            {
+                Console.WriteLine("There must be at least 3 moves, e.g. Rock Paper Scissors.");
+                argsErr = true;
+            }
+
+            if (moves.Count % 2 == 0)
+            {
+                Console.WriteLine("There must be odd amount of moves, e.g. Rock Paper Scissors.");
+                argsErr = true;
             }
         }
     }

@@ -7,7 +7,7 @@ namespace Rock_Paper_Scissors
     internal class Verifier
     {
         private static RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider();
-
+        private const int _keyByteArraySize = 32;
         private Byte[] _key;
 
         public string Key
@@ -17,7 +17,7 @@ namespace Rock_Paper_Scissors
 
         public Verifier()
         {
-            _key = new byte[32];
+            _key = new byte[_keyByteArraySize];
             rngCsp.GetBytes(_key);
         }
 

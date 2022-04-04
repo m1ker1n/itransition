@@ -1,64 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using ConsoleTables;
+
 namespace Rock_Paper_Scissors
 {
     internal class Table
     {
         private List<string> _moves;
-        private int _maxLen;
-        static private string borderCh = "*";
 
         public Table(List<string> moves)
         {
             _moves = moves;
-            _maxLen = 4;
-            foreach(var val in moves)
-            {
-                _maxLen = _maxLen < val.Length ? val.Length : _maxLen;
-            }
         }
 
         public void Draw()
         {
-            DrawHorizontalLine();
-            DrawElement("", true);
-            foreach(var val in _moves)
+            string[] columns = PrepareColumns();
+            var table = new ConsoleTable(new ConsoleTableOptions { EnableCount = false });
+            table.AddColumn(columns);
+            for (int i = 0; i<_moves.Count; i++)
             {
-                DrawElement(val);
+                string[] row = PrepareRow(i);
+                table.AddRow(row);
             }
-            Console.WriteLine();
-
-            for(int index1 = 0; index1 < _moves.Count; index1++)
-            {
-                DrawHorizontalLine();
-                DrawElement(_moves[index1], true);
-                for (int index2 = 0; index2 < _moves.Count; index2++) 
-                {
-                    DrawElement(GameRules.GetResult(index1, index2, _moves).ToString());
-                }
-                Console.WriteLine();
-            }
-            
-            DrawHorizontalLine();
+            table.Write();
         }
 
-        private void DrawHorizontalLine()
+        private string[] PrepareColumns()
         {
-            for (int i = 0; i < (_moves.Count + 1) * (_maxLen + 1) + 1; i++)
-                Console.Write(borderCh);
-            Console.WriteLine();
+            string[] result = new string[_moves.Count + 1];
+            result[0] = string.Empty;
+            for (int i = 0; i < _moves.Count; i++)
+                result[i + 1] = _moves[i];
+            return result;
         }
-
-        private void DrawElement(string content, bool first = false)
+        
+        private string[] PrepareRow(int moveIndex)
         {
-            if (first) Console.Write(borderCh);
-            for (int i = 0; i < (_maxLen - content.Length) / 2 + (_maxLen - content.Length) % 2; i++)
-                Console.Write(" ");
-            Console.Write(content);
-            for (int i = 0; i < (_maxLen - content.Length) / 2; i++)
-                Console.Write(" ");
-            Console.Write(borderCh);
+            string[] result = new string[_moves.Count + 1];
+            result[0] = _moves[moveIndex];
+            for (int i = 0; i < _moves.Count; i++)
+                result[i + 1] = GameRules.GetResult(i, moveIndex, _moves).ToString(); 
+            return result;
         }
     }
 }

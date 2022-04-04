@@ -14,3 +14,5 @@ F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\refint
 F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.pdb
 F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.genruntimeconfig.cache
 F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\ref\Rock Paper Scissors.dll
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\bin\Debug\net5.0\ConsoleTables.dll
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.csproj.CopyComplete
