@@ -1,0 +1,16 @@
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\bin\Debug\net5.0\Rock Paper Scissors.exe
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\bin\Debug\net5.0\Rock Paper Scissors.deps.json
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\bin\Debug\net5.0\Rock Paper Scissors.runtimeconfig.json
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\bin\Debug\net5.0\Rock Paper Scissors.runtimeconfig.dev.json
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\bin\Debug\net5.0\Rock Paper Scissors.dll
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\bin\Debug\net5.0\Rock Paper Scissors.pdb
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.csproj.AssemblyReference.cache
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.GeneratedMSBuildEditorConfig.editorconfig
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.AssemblyInfoInputs.cache
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.AssemblyInfo.cs
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.csproj.CoreCompileInputs.cache
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.dll
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\refint\Rock Paper Scissors.dll
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.pdb
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\Rock Paper Scissors.genruntimeconfig.cache
+F:\itransition\3\Rock Paper Scissors\Rock Paper Scissors\obj\Debug\net5.0\ref\Rock Paper Scissors.dll
