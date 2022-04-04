@@ -9,7 +9,7 @@ namespace Rock_Paper_Scissors
         static void Main(string[] args)
         {
             bool argsErr = false;
-            var moves = InstantiateMoves(args, ref argsErr);
+            var moves = InitializeMoves(args, ref argsErr);
             MovesValidityCheck(moves, ref argsErr);
             if (argsErr) return;
 
@@ -94,7 +94,7 @@ namespace Rock_Paper_Scissors
             }
         }
 
-        static List<string> InstantiateMoves(string[] args, ref bool argsErr)
+        static List<string> InitializeMoves(string[] args, ref bool argsErr)
         {
             var moves = new List<string>();
             for (int i = 0; i < args.Length; i++)
