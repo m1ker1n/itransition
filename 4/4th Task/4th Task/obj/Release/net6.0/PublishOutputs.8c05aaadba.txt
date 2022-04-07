@@ -1,0 +1,39 @@
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.exe
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\appsettings.json
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.deps.json
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.runtimeconfig.json
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.pdb
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.Identity.Client.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\System.Drawing.Common.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\System.Runtime.Caching.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\System.Security.Permissions.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\System.Windows.Extensions.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
