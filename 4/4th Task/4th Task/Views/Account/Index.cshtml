@@ -4,11 +4,6 @@
     ViewData["Title"] = "Accounts";
 }
 
-@functions{
-    private string checkedMessage = "Not checked yet";
-    private void CheckChanged() => checkedMessage = $"Last changed at {DateTime.Now}";
-}
-
 <h1>@ViewData["Title"]</h1>
 
 <table class ="table">
@@ -44,11 +39,3 @@
         }
     </tbody>    
 </table>
-
-<p>
-    <label>
-        <input type="checkbox" onchange="CheckChanged" />
-        @checkedMessage
-    </label>
-</p>
-
