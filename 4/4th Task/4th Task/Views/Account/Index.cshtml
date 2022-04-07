@@ -1,0 +1,54 @@
+﻿@model IEnumerable<User>
+
+@{
+    ViewData["Title"] = "Accounts";
+}
+
+@functions{
+    private string checkedMessage = "Not checked yet";
+    private void CheckChanged() => checkedMessage = $"Last changed at {DateTime.Now}";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class ="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.CheckBox("all", false, new {onchange="ChangeAll"})
+            </th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Register Date</th>
+            <th scope="col">Last Login Date</th>
+            <th scope="col">Banned</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in @Model)
+        {
+        <tr>
+            <th scope="row">
+                @Html.CheckBox("id",false)
+            </th>
+            <td>@user.Id</td>
+            <td>@user.Name</td>
+            <td>@user.Email</td>
+            <td>@user.Password</td>
+            <td>@user.CreatedDate</td>
+            <td>@user.LastLogIn</td>
+            <td>@user.Banned</td>
+        </tr>
+        }
+    </tbody>    
+</table>
+
+<p>
+    <label>
+        <input type="checkbox" onchange="CheckChanged" />
+        @checkedMessage
+    </label>
+</p>
+
