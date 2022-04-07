@@ -1,6 +1,7 @@
 using _4th_Task.Models; // пространство имен контекста данных UserContext
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using _4th_Task.PrincipalValidator;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+        options.Events.OnValidatePrincipal = PrincipalValidator.ValidateAsync;
     });
 
 

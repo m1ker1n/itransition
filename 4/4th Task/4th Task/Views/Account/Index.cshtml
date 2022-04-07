@@ -1,4 +1,4 @@
-﻿@model IEnumerable<User>
+﻿@model IEnumerable<User>;
 
 @{
     ViewData["Title"] = "Accounts";
@@ -6,36 +6,64 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<table class ="table">
-    <thead>
-        <tr>
-            <th scope="col">
-                @Html.CheckBox("all", false, new {onchange="ChangeAll"})
-            </th>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Password</th>
-            <th scope="col">Register Date</th>
-            <th scope="col">Last Login Date</th>
-            <th scope="col">Banned</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var user in @Model)
-        {
-        <tr>
-            <th scope="row">
-                @Html.CheckBox("id",false)
-            </th>
-            <td>@user.Id</td>
-            <td>@user.Name</td>
-            <td>@user.Email</td>
-            <td>@user.Password</td>
-            <td>@user.CreatedDate</td>
-            <td>@user.LastLogIn</td>
-            <td>@user.Banned</td>
-        </tr>
-        }
-    </tbody>    
-</table>
+<form asp-controller="Account" asp-anti-forgery="true">
+    <button type=submit class="btn btn-primary" name=BanButton asp-action="Ban">Ban</button>
+    <button type=submit class="btn btn-primary" name=UnbanButton asp-action="Unban">Unban</button>
+    <button type=submit class="btn btn-primary" name=DeleteButton asp-action="Delete">Delete</button>
+    
+    <table class ="table">
+        <thead>
+            <tr>
+                <th scope="col">
+                    <input type=checkbox id=headerCheckBox onclick=ChangeAll() />
+                </th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Register Date</th>
+                <th scope="col">Last Login Date</th>
+                <th scope="col">Banned</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var user in @Model)
+            {
+            <tr>
+                <th scope="row">
+                    <input type=checkbox name=rowCheckBox onclick=ChangeHeaderCheckBox() value=@user.Id />
+                </th>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Password</td>
+                <td>@user.CreatedDate</td>
+                <td>@user.LastLogIn</td>
+                <td>@user.Banned</td>
+            </tr>
+            }
+        </tbody>    
+    </table>
+</form>
+
+
+
+<script>
+    function ChangeAll()
+    {
+        var headerCheckBox = document.getElementById('headerCheckBox');
+        var checkBoxesList = document.getElementsByName('rowCheckBox');
+        var checkBoxes = Array.from(checkBoxesList);
+
+        checkBoxes.forEach(value => value.checked = headerCheckBox.checked);
+    }
+
+    function ChangeHeaderCheckBox()
+    {
+        var headerCheckbBox = document.getElementById('headerCheckBox');
+        var checkboxesList = document.getElementsByName('rowCheckBox');
+        var checkboxes = Array.from(checkboxesList);
+ 
+        headerCheckBox.checked = checkboxes.every(currentValue => currentValue.checked);
+    }
+</script>

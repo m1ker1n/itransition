@@ -47,7 +47,7 @@ namespace _4th_Task.Controllers
                         return View(model);
                     }
                         
-                    await Authenticate(model.Email);
+                    await Authenticate(user.Id.ToString());
                     user.LastLogIn = DateTime.Now;
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index", "Home");
@@ -72,10 +72,11 @@ namespace _4th_Task.Controllers
                 User? user = await db.Users.FirstOrDefaultAsync(user => user.Email == model.Email);
                 if (user == null)
                 {
-                    db.Users.Add(new User { Name = model.Name, Email = model.Email, Password = model.Password, CreatedDate = DateTime.Now, Banned = false, LastLogIn = DateTime.Now });
+                    var newUser = db.Users.Add(new User { Name = model.Name, Email = model.Email, Password = model.Password, CreatedDate = DateTime.Now, Banned = false, LastLogIn = DateTime.Now });
+                    
                     await db.SaveChangesAsync();
 
-                    await Authenticate(model.Email);
+                    await Authenticate(newUser.Entity.Id.ToString());
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -84,27 +85,73 @@ namespace _4th_Task.Controllers
             return View(model);
         }
 
-        [HttpPut]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SetBanStates(bool state, params int[] ids)
+        public async Task<IActionResult> Ban(IFormCollection formCollection)
         {
+            var ids = GetIds(formCollection);
+            await SetBanState(true, ids);
+            return RedirectToAction("Index", "Account");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Unban(IFormCollection formCollection)
+        {
+            var ids = GetIds(formCollection);
+            await SetBanState(false, ids);
+            return RedirectToAction("Index", "Account");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(IFormCollection formCollection)
+        {
+            var ids = GetIds(formCollection);
             foreach(var id in ids)
+            {
+                User? user = await db.Users.FirstOrDefaultAsync(user => user.Id == id);
+                if (user != null)
+                {
+                    db.Users.Remove(user);
+                    await db.SaveChangesAsync();
+
+                    //if (user.Id == int.Parse(User.Identity.Name))
+                    //    await LogOut();
+                }
+            }
+            return RedirectToAction("Index", "Account");
+        }
+
+        private async Task SetBanState(bool state, int[] ids)
+        {
+            foreach (var id in ids)
             {
                 User? user = await db.Users.FirstOrDefaultAsync(user => user.Id == id);
                 if (user != null)
                 {
                     user.Banned = state;
                     await db.SaveChangesAsync();
+
+                    //if (user.Banned == true && user.Id == int.Parse(User.Identity.Name))
+                    //    await LogOut();
+                    
                 }
             }
-            return RedirectToAction("Index", "Account");
         }
 
-        private async Task Authenticate(string email)
+        private int[] GetIds(IFormCollection formCollection)
+        {
+            string[] stringIds = formCollection["rowCheckBox"];
+            int[] ids = Array.ConvertAll(stringIds, s => int.Parse(s));
+            return ids;
+        }
+
+        private async Task Authenticate(string userId)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, email)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, userId)
             };
 
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
