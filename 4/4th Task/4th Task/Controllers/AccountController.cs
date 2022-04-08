@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 using _4th_Task.ViewModels;
 using _4th_Task.Models;
+using _4th_Task.PrincipalValidator;
 
 namespace _4th_Task.Controllers
 {
@@ -33,7 +34,6 @@ namespace _4th_Task.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)
@@ -46,15 +46,21 @@ namespace _4th_Task.Controllers
                         ModelState.AddModelError("", "You're banned.");
                         return View(model);
                     }
-                        
-                    await Authenticate(user.Id.ToString());
-                    user.LastLogIn = DateTime.Now;
-                    await db.SaveChangesAsync();
+
+                    await LoginUser(user);
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Invalid credentials");
             }
             return View(model);
+        }
+
+        private async Task LoginUser(User user)
+        {
+            if (user == null) return;
+            await Authenticate(user.Id.ToString());
+            user.LastLogIn = DateTime.Now;
+            await db.SaveChangesAsync();
         }
 
         [HttpGet]
@@ -64,7 +70,6 @@ namespace _4th_Task.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterModel model)
         {
             if(ModelState.IsValid)
@@ -72,12 +77,18 @@ namespace _4th_Task.Controllers
                 User? user = await db.Users.FirstOrDefaultAsync(user => user.Email == model.Email);
                 if (user == null)
                 {
-                    var newUser = db.Users.Add(new User { Name = model.Name, Email = model.Email, Password = model.Password, CreatedDate = DateTime.Now, Banned = false, LastLogIn = DateTime.Now });
+                    var newUser = db.Users.Add(new User 
+                    { 
+                        Name = model.Name, 
+                        Email = model.Email, 
+                        Password = model.Password, 
+                        CreatedDate = DateTime.Now, 
+                        Banned = false, 
+                        LastLogIn = DateTime.Now 
+                    });
                     
                     await db.SaveChangesAsync();
-
                     await Authenticate(newUser.Entity.Id.ToString());
-
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "This email already registered");
@@ -86,38 +97,42 @@ namespace _4th_Task.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Ban(IFormCollection formCollection)
         {
-            var ids = GetIds(formCollection);
-            await SetBanState(true, ids);
-            return RedirectToAction("Index", "Account");
+            return AccountAction(formCollection, BanUsers).Result;
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Unban(IFormCollection formCollection)
         {
-            var ids = GetIds(formCollection);
-            await SetBanState(false, ids);
-            return RedirectToAction("Index", "Account");
+            return AccountAction(formCollection, UnbanUsers).Result;
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(IFormCollection formCollection)
         {
+            return AccountAction(formCollection, DeleteUsers).Result;
+        }
+
+        private delegate Task ActionDelegate(int[] ids);
+
+        private async Task<IActionResult> AccountAction(IFormCollection formCollection, ActionDelegate action)
+        {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
             var ids = GetIds(formCollection);
-            foreach(var id in ids)
-            {
-                User? user = await db.Users.FirstOrDefaultAsync(user => user.Id == id);
-                if (user != null)
-                {
-                    db.Users.Remove(user);
-                    await db.SaveChangesAsync();
-                }
-            }
+            await action(ids);
             return RedirectToAction("Index", "Account");
+        }
+
+        private async Task BanUsers(int[] ids)
+        {
+            await SetBanState(true, ids);
+        }
+
+        private async Task UnbanUsers(int[] ids)
+        {
+            await SetBanState(false, ids);
         }
 
         private async Task SetBanState(bool state, int[] ids)
@@ -128,6 +143,19 @@ namespace _4th_Task.Controllers
                 if (user != null)
                 {
                     user.Banned = state;
+                    await db.SaveChangesAsync();
+                }
+            }
+        }
+
+        private async Task DeleteUsers(int[] ids)
+        {
+            foreach (var id in ids)
+            {
+                User? user = await db.Users.FirstOrDefaultAsync(user => user.Id == id);
+                if (user != null)
+                {
+                    db.Users.Remove(user);
                     await db.SaveChangesAsync();
                 }
             }
@@ -146,9 +174,7 @@ namespace _4th_Task.Controllers
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, userId)
             };
-
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
 
@@ -157,6 +183,5 @@ namespace _4th_Task.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Account");
         }
-
     }
 }

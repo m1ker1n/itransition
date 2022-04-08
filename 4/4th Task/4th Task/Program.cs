@@ -14,7 +14,8 @@ builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(conne
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+        options.LoginPath = new PathString("/Account/Login");
+        options.AccessDeniedPath = new PathString("/Account/Login");
         options.Events.OnValidatePrincipal = PrincipalValidator.ValidateAsync;
     });
 
