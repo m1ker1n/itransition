@@ -115,9 +115,6 @@ namespace _4th_Task.Controllers
                 {
                     db.Users.Remove(user);
                     await db.SaveChangesAsync();
-
-                    //if (user.Id == int.Parse(User.Identity.Name))
-                    //    await LogOut();
                 }
             }
             return RedirectToAction("Index", "Account");
@@ -132,10 +129,6 @@ namespace _4th_Task.Controllers
                 {
                     user.Banned = state;
                     await db.SaveChangesAsync();
-
-                    //if (user.Banned == true && user.Id == int.Parse(User.Identity.Name))
-                    //    await LogOut();
-                    
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="Default Web Site" tags="IisApp">
+  <parameter name="IIS Web Application Name" description="" value="test.u1647981.plsk.regruhosting.ru" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^F:\\itransition\\4\\4th\ Task\\4th\ Task\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
   </parameter>
 </parameters>

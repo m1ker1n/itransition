@@ -57,3 +57,5 @@ F:\itransition\4\4th Task\4th Task\obj\Debug\net6.0\staticwebassets.development.
 F:\itransition\4\4th Task\4th Task\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 F:\itransition\4\4th Task\4th Task\obj\Debug\net6.0\scopedcss\bundle\4th Task.styles.css
 F:\itransition\4\4th Task\4th Task\obj\Debug\net6.0\scopedcss\projectbundle\4th Task.bundle.scp.css
+F:\itransition\4\4th Task\4th Task\bin\Debug\net6.0\Humanizer.dll
+F:\itransition\4\4th Task\4th Task\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll

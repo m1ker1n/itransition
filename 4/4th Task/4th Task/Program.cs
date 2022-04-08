@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
- string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+ string connection = builder.Configuration.GetConnectionString("DeployConnection");
 builder.Services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -29,7 +29,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

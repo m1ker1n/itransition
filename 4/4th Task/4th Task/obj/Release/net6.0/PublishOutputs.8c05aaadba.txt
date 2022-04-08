@@ -2,7 +2,6 @@ F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.exe
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\appsettings.json
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.dll
-F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.deps.json
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.runtimeconfig.json
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.pdb
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
@@ -37,3 +36,4 @@ F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\li
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+F:\itransition\4\4th Task\4th Task\obj\Release\net6.0\PubTmp\Out\4th Task.deps.json
