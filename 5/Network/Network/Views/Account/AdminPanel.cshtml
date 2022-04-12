@@ -1,0 +1,124 @@
+﻿@model Network.ViewModels.AdminPanelModel
+
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="accounts-tab" data-bs-toggle="tab" data-bs-target="#accounts" type="button" role="tab" aria-controls="accounts" aria-selected="true">Accounts</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="roles-tab" data-bs-toggle="tab" data-bs-target="#roles" type="button" role="tab" aria-controls="roles" aria-selected="false">Roles</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="accounts" role="tabpanel" aria-labelledby="accounts-tab">
+    <form asp-controller="Account" asp-anti-forgery="true">
+        <button type=submit class="btn btn-primary" name=DeleteButton asp-action="Delete">Delete</button>
+    
+        <table class ="table">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        <input type=checkbox id=headerCheckBox onclick=ChangeAll() />
+                    </th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Register Date</th>
+                    <th scope="col">Last Login Date</th>
+                    <th scope="col">Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var user in @Model.Users)
+                {
+                <tr>
+                    <th scope="row">
+                        <input type=checkbox name=rowCheckBox onclick=ChangeHeaderCheckBox() value=@user.Id />
+                    </th>
+                    <td scope="row">@user.Id</td>
+                    <td scope="row">@user.Name</td>
+                    <td scope="row">@user.Email</td>
+                    <td scope="row">@user.Password</td>
+                    <td scope="row">@user.Created</td>
+                    <td scope="row">@user.LoggedOn</td>
+                    <td scope="row">@user.Role.Name</td>
+                </tr>
+                }
+            </tbody>    
+        </table>
+    </form>
+    </div>
+    <div class="tab-pane fade" id="roles" role="tabpanel" aria-labelledby="roles-tab">
+        <table class ="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var role in @Model.Roles)
+                {
+                <tr>
+                    <td scope="row">@role.Id</td>
+                    <td scope="row">@role.Name</td>
+                </tr>
+                }
+            </tbody>    
+        </table>
+    </div>
+    <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+        <table class ="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Body</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Addressees</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var message in @Model.Messages.OrderByDescending(m => m.Created))
+                {
+                <tr>
+                    <td scope="row">@message.Id</td>
+                    <td scope="row">@message.Subject</td>
+                    <td scope="row">@message.Body</td>
+                    <td scope="row">@message.Created</td>
+                    <td scope="row">@message.Author.Email (name: @message.Author.Name, id: @message.AuthorId)</td>
+                    <td scope="row">@String.Join(";", Array.ConvertAll(message.Addressees.ToArray(), a => $"{a.Email} (name: {a.Name}, id: {a.Id})"))</td>
+                </tr>
+                }
+            </tbody>    
+        </table>
+    </div>
+</div>
+
+<script>
+    function ChangeAll()
+    {
+        var headerCheckBox = document.getElementById('headerCheckBox');
+        var checkBoxesList = document.getElementsByName('rowCheckBox');
+        var checkBoxes = Array.from(checkBoxesList);
+        checkBoxes.forEach(value => value.checked = headerCheckBox.checked);
+    }
+    function ChangeHeaderCheckBox()
+    {
+        var headerCheckbBox = document.getElementById('headerCheckBox');
+        var checkboxesList = document.getElementsByName('rowCheckBox');
+        var checkboxes = Array.from(checkboxesList);
+ 
+        headerCheckBox.checked = checkboxes.every(currentValue => currentValue.checked);
+    }
+</script>

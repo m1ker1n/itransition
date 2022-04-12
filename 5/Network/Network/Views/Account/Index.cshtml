@@ -1,0 +1,23 @@
+﻿@model Network.Models.User
+
+@{
+    ViewData["Title"] = "Account";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    Name: @Model.Name
+</div>
+
+<div>
+    Email: @Model.Email
+</div>
+
+<div>
+    Password: @Model.Password
+</div>
+
+<div>
+    Role: @Model.Role.Name
+</div>

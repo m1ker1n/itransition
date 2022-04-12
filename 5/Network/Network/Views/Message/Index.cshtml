@@ -1,0 +1,81 @@
+﻿@model Network.Models.User
+
+@{
+    ViewData["Title"] = "Your messages";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<br />
+<a asp-area="" asp-controller="Message" asp-action="Write">Write a message</a>
+<br />
+<br />
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="sent-messages-tab" data-bs-toggle="tab" data-bs-target="#sent-messages" type="button" role="tab" aria-controls="sent-messages" aria-selected="true">Sent</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="received-messages-tab" data-bs-toggle="tab" data-bs-target="#received-messages" type="button" role="tab" aria-controls="received-messages" aria-selected="false">Received</button>
+    </li>
+</ul>
+<br />
+
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="sent-messages" role="tabpanel" aria-labelledby="sent-messages-tab">
+        @if(@Model.SentMessages.Count == 0 || @Model.SentMessages == null)
+        {
+            <h2>No messages from you :c</h2>
+        }
+        else
+        {
+            @foreach(var message in Model.SentMessages.OrderByDescending(m => m.Created))
+            {
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-heading-@message.Id-sent">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse-@message.Id-sent" aria-expanded="true" aria-controls="panelsStayOpen-collapse-@message.Id-sent">
+                                Author: @message.Author.Email (@message.Author.Name), Created: @message.Created, Subject: @message.Subject
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapse-@message.Id-sent" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading-@message.Id-sent">
+                            <div class="accordion-body">
+                                Author: @message.Author.Email (@message.Author.Name)<br />
+                                Adressees: @String.Join(";", Array.ConvertAll(message.Addressees.ToArray(), a => $"{a.Email} ({a.Name})")) <br />
+                                @message.Body
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="tab-pane fade" id="received-messages" role="tabpanel" aria-labelledby="received-messages-tab">
+        @if(@Model.ReceivedMessages.Count == 0 || @Model.ReceivedMessages == null)
+        {
+            <h2>No messages for you :c</h2>
+        }
+        else
+        {
+            @foreach(var message in Model.ReceivedMessages.OrderByDescending(m => m.Created))
+            {
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-heading-@message.Id-received">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse-@message.Id-received" aria-expanded="true" aria-controls="panelsStayOpen-collapse-@message.Id-received">
+                                Author: @message.Author.Email (@message.Author.Name), Created: @message.Created, Subject: @message.Subject
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapse-@message.Id-received" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-heading-@message.Id-received">
+                            <div class="accordion-body">
+                                Author: @message.Author.Email (@message.Author.Name)<br />
+                                Adressees: @String.Join(";", Array.ConvertAll(message.Addressees.ToArray(), a => $"{a.Email} ({a.Name})")) <br />
+                                @message.Body
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#autoCompleteSelect2').select2({
+            placeholder: 'Emails',
+            multiple: true,
+            ajax: {
+                type: 'GET',
+                url: '/Account/Search',
+                processResults: function (data){
+                    return {
+                        results: $.map(data, function(item) {
+                            return {
+                                text: item.email,
+                                id: item.id
+                            }
+                        })
+                    }
+                }
+            }
+        });
+    })
+</script>
+
+@{
+    ViewData["Title"] = "Writing a message";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="validation" asp-validation-summary="All"></div>
+<form asp-action="Write" asp-controller="Message" asp-anti-forgery="true">
+    <div class="mb-3">
+        <select id="autoCompleteSelect2" name="Ids" multiple="multiple" style="width:100%"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Subject</label>
+        <input class="form-control" id="SubjectInput" placeholder="subject" name="Subject">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Body</label>
+        <textarea class="form-control" id="BodyInput" rows="3" name="Body"></textarea>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+</form>
