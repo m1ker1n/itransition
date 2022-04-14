@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9hOae6RNx0OEKiXjdMNSNgAAAAACAAAAAAAQZgAAAAEAACAAAABWpQFaML4R+pr+8uJ4rJKF9HpJbqE9mNOnjaqp14+IgAAAAAAOgAAAAAIAACAAAADDu44Y5620mDYqJKztC2qweZv30aRjZChE/56u4GvAzjAAAAAoTy794apBdkww0ejRYbtpd7uxULEYSDOcwBeItcwQeiK2hyMRQw4Fir8HhK2zg7JAAAAAlpbkrFEWjRn4IhhhsSLjwNGjKIM1rBmKIih4yxS4zFGHuuPDrGl0++P4cMj3UuPNwOLBm1dC3S2v8udGbVFpyQ==</EncryptedPassword>
+    <History>True|2022-04-14T10:59:40.5336523Z;True|2022-04-14T13:50:58.1810181+03:00;True|2022-04-14T13:27:52.6682553+03:00;True|2022-04-13T06:33:53.0024460+03:00;True|2022-04-13T06:20:04.5373727+03:00;False|2022-04-13T06:19:32.5943465+03:00;True|2022-04-12T22:52:21.2610108+03:00;True|2022-04-12T22:35:00.3813140+03:00;True|2022-04-12T22:29:50.9991780+03:00;True|2022-04-12T22:27:10.3201296+03:00;True|2022-04-12T22:26:14.6734865+03:00;True|2022-04-12T22:25:00.0617136+03:00;True|2022-04-12T22:16:40.8887047+03:00;True|2022-04-12T22:14:40.6471354+03:00;False|2022-04-12T22:14:01.3274826+03:00;True|2022-04-12T22:07:06.2151745+03:00;True|2022-04-12T22:06:05.2795379+03:00;True|2022-04-12T22:03:58.2121628+03:00;True|2022-04-12T22:03:12.6864917+03:00;True|2022-04-12T22:01:04.5814404+03:00;</History>
+  </PropertyGroup>
+</Project>

@@ -65,3 +65,5 @@ F:\itransition\5\Network\Network\bin\Debug\net6.0\Newtonsoft.Json.dll
 F:\itransition\5\Network\Network\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 F:\itransition\5\Network\Network\bin\Debug\net6.0\libman.json
 F:\itransition\5\Network\Network\bin\Debug\net6.0\System.Net.WebSockets.WebSocketProtocol.dll
+F:\itransition\5\Network\Network\bin\Debug\net6.0\Humanizer.dll
+F:\itransition\5\Network\Network\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll

@@ -13,6 +13,10 @@ namespace Network.Models
         public string Body { get; set; } = String.Empty;
         public DateTime Created { get; set; }
 
+        public int? ReplyToId { get; set; }
+        [JsonIgnoreAttribute]
+        public virtual Message? ReplyTo { get; set; } = null;
+
         public int AuthorId { get; set; }
         [JsonIgnoreAttribute]
         public virtual User Author { get; set; } = null!;

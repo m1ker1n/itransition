@@ -47,7 +47,7 @@ namespace Network.Controllers
                 ModelState.AddModelError("", "A user with this email/name already exists.");
                 return View(model);
             }
-            User? user = db.CreateUser(model.Email, model.Name, model.Password, db.GetUserRole());
+            User? user = db.CreateUser(model.Email, model.Password, model.Name, db.GetUserRole());
             if (user == null)
             {
                 ModelState.AddModelError("", "Failed to register. Try again later.");

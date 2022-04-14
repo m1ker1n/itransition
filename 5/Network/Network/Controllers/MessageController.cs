@@ -56,6 +56,34 @@ namespace Network.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Reply(int id)
+        {
+            Message? msg = db.Messages.Find(id);
+            if (msg == null)
+                return Write();
+            return View(msg);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Reply(IFormCollection formCollection)
+        {
+            Message? msg = db.Messages.Find(int.Parse(formCollection["MessageToReply"]));
+            User? author = AccountController.GetUser(User, db);
+            User? addressee = msg.Author;
+            var replyTo = new MessageBuilder(db)
+                .SetAuthor(author)
+                .AddAddressee(addressee)
+                .SetSubject(formCollection["Subject"])
+                .SetBody(formCollection["Body"])
+                .RepliesTo(msg)
+                .ToMessage();
+            db.SendMessage(replyTo);
+            await Send(replyTo.Id.ToString(), new string[] { addressee.Email });
+            return RedirectToAction("Index", "Message");
+        }
+
         public async Task Send(string messageId, string[] addresseeEmails)
         {
             foreach (var addresseeEmail in addresseeEmails)

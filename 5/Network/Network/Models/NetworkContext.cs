@@ -11,7 +11,7 @@ namespace Network.Models
         public NetworkContext(DbContextOptions<NetworkContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+            //Initialization();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -150,7 +150,7 @@ namespace Network.Models
 
         private void Initialization()
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
 
             var adminRole = new Role { Name = "admin" };

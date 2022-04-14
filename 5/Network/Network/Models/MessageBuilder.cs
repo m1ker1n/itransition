@@ -40,6 +40,12 @@
             return this;
         }
 
+        public MessageBuilder RepliesTo(Message? msg)
+        {
+            message.ReplyTo = msg;
+            return this;
+        }
+
         public Message? ToMessage()
         {
             if (message.Author == null) return null;
